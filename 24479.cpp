@@ -20,7 +20,7 @@ void dfs(int v) {
 int main() {
     
     cin.tie(0) -> sync_with_stdio(0);
-    cout.tie(0) -> sync_with_stdio(0);
+    cout.tie(0);
     int n, m, r;
 
     cin >> n >> m >> r;
@@ -35,8 +35,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         sort(vec[i].begin(), vec[i].end());
     }
-    //TODO : 우선순위 큐 사용
-    
+
     dfs(r);
     
     for (int i = 1; i <= n; i++) {
