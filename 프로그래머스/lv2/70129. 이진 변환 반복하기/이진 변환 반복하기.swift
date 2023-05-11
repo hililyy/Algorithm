@@ -6,10 +6,10 @@ func solution(_ s:String) -> [Int] {
     var beforeNum = s
     
     while(true) {
-        var afterNum = beforeNum.filter{ $0 == "1" }
-        zeroCount += beforeNum.count - afterNum.count
+        var len = beforeNum.filter{ $0 == "1" }.count
+        zeroCount += beforeNum.count - len
         changeCount += 1
-        beforeNum = String(afterNum.count, radix: 2)
+        beforeNum = String(len, radix: 2)
         if beforeNum == "1" { return [changeCount, zeroCount] }
     }
     return []
