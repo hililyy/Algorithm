@@ -5,16 +5,14 @@ func solution(_ n:Int, _ words:[String]) -> [Int] {
     var beforeWords: [String] = []
     
     for (i, word) in words.enumerated() {
-        if lastChar != word.prefix(1) && lastChar != "" {
-            return makeResult(i, n)
-        } else {
-            if beforeWords.contains(word) {
+        if lastChar != "" {
+            guard lastChar.isEmpty || lastChar == word.prefix(1),
+                  !beforeWords.contains(word) else {
                 return makeResult(i, n)
-            } else {
-                beforeWords.append(word)
-                lastChar = String(word.suffix(1))
             }
         }
+        beforeWords.append(word)
+        lastChar = String(word.suffix(1))
     }
     return [0, 0]
 }
