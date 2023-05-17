@@ -1,3 +1,3 @@
 import Foundation
 
-func solution(_ numbers:[Int]) -> [Int] { numbers.map { $0 * 2 } }
+func solution(_ numbers:[Int]) -> [Int] { return numbers.map { $0 * 2 } }
