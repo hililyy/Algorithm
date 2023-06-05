@@ -4,7 +4,6 @@
 using namespace std;
 
 int n, m;
-bool is_visited[1001][1001] = { 0 };
 int field[1001][1001] = { 0 };
 queue<pair<int, int>> q;
 int x_arr[4] = {0 ,0, -1, 1};
@@ -21,12 +20,10 @@ void bfs() {
             int xx = x + x_arr[t];
             int yy = y + y_arr[t];
             
-            if(xx < 0 || yy < 0 || xx >= m || yy >= n) continue;
-            if(!is_visited[xx][yy] && field[xx][yy] == 0) {
-                is_visited[xx][yy] = true;
-                field[xx][yy] = field[x][y] + 1;
-                q.push(make_pair(xx, yy));
-            }
+            if(xx < 0 || yy < 0 || xx >= m || yy >= n || field[xx][yy] != 0) continue;
+            
+            field[xx][yy] = field[x][y] + 1;
+            q.push(make_pair(xx, yy));
         }
     }
 }
@@ -40,7 +37,6 @@ int main() {
             cin >> field[i][j];
             if(field[i][j] == 1) {
                 q.push(make_pair(i, j));
-                is_visited[i][j] = true;
             }
         }
     }
