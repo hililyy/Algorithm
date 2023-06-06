@@ -1,39 +1,32 @@
 #include <iostream>
-#include <algorithm>
-#include <queue>
 using namespace std;
 
-int n,m;
-char field[251][251] = { 0 };
-bool is_visited[251][251] = { 0 };
-int x_arr[4] = {0, 0, -1, 1};
-int y_arr[4] = {1, -1, 0, 0};
-int wolf = 0;
-int sheap = 0;
-int live_wolf = 0;
-int live_sheap = 0;
+char field[251][251];
+bool is_visited[251][251];
+int x_arr[] = {0, 0, -1, 1};
+int y_arr[] = {1, -1, 0, 0};
+int n, m, wolf, sheap, live_wolf, live_sheap;
 
 void dfs(int x, int y) {
     for(int t = 0; t < 4; t++) {
         int xx = x + x_arr[t];
         int yy = y + y_arr[t];
         
-        if(xx < 0 || yy < 0 || xx >= n || yy >= m) continue;
-        if(!is_visited[xx][yy] && field[xx][yy] != '#') {
-            is_visited[xx][yy] = true;
-            
-            if(field[xx][yy] == 'v') {
-                wolf++;
-            } else if(field[xx][yy] == 'k'){
-                sheap++;
-            }
-            
-            dfs(xx, yy);
+        if(xx < 0 || yy < 0 || xx >= n || yy >= m || is_visited[xx][yy] || field[xx][yy] == '#') continue;
+        is_visited[xx][yy] = true;
+        
+        if(field[xx][yy] == 'v') {
+            wolf++;
+        } else if(field[xx][yy] == 'k'){
+            sheap++;
         }
+        
+        dfs(xx, yy);
     }
 }
 
 int main() {
+    cout.tie(0); cin.tie(0) -> sync_with_stdio(0);
     cin >> n >> m;
     
     for(int i = 0; i < n; i++) {
