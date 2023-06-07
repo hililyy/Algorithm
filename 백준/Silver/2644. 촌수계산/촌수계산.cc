@@ -32,10 +32,6 @@ int main() {
         v[b].push_back(a);
     }
     
-	for (int i = 1; i <= n; i++) {
-	    sort(v[i].begin(), v[i].end());
-	}
-    
     dfs(x, y, 0);
     
     if (answer == 0) {
