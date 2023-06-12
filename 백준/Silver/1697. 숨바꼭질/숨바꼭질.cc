@@ -4,15 +4,12 @@ using namespace std;
 
 int field[100000];
 int n, k;
-int answer;
 queue<int> q;
 void bfs(int x, int y) {
-    int cnt = 0;
     while(!q.empty()) {
         int now = q.front();
         q.pop();
         if(now == k) {  // 동생을 찾았으면
-            answer = cnt;
             return;
         }
         
@@ -33,7 +30,6 @@ void bfs(int x, int y) {
             q.push(now - 1);
             
         }
-        cnt++;
     }
 }
 
