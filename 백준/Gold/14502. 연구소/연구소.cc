@@ -24,20 +24,20 @@ void bfs() {
                 is_visited[i][j] = true;
                 
                 while(!q.empty()) {
-                    int y = q.front().first;
-                    int x = q.front().second;
+                    int x = q.front().first;
+                    int y = q.front().second;
                     q.pop();
                     
                     for(int t = 0; t < 4; t++) {
-                        int yy = y + y_arr[t];
                         int xx = x + x_arr[t];
+                        int yy = y + y_arr[t];
                         
-                        if(xx < 0 || yy < 0 || xx >= m || yy >= n) continue;
+                        if(xx < 0 || yy < 0 || xx >= n || yy >= m) continue;
                         
-                        if(!is_visited[yy][xx] && c_field[yy][xx] == 0) {
-                            q.push({yy, xx});
-                            is_visited[yy][xx] = true;
-                            c_field[yy][xx] = 2;
+                        if(!is_visited[xx][yy] && c_field[xx][yy] == 0) {
+                            q.push({xx, yy});
+                            is_visited[xx][yy] = true;
+                            c_field[xx][yy] = 2;
                         }
                     }
                 }
