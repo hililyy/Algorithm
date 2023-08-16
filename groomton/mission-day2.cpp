@@ -10,7 +10,7 @@ int main() {
 		cin >> a;
 		sum += a;
 	}
- 
+	
 	sum = sum % 1440;
 	
 	if (60 - m > (sum % 60)) {
