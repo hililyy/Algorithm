@@ -9,6 +9,7 @@ vector <int> v[1001];
 
 int dfs(int i, int j) {
 	int count = 0;
+	
 	for(int t = 0; t < 8; t++) {
 		int xx = x_arr[t] + i;
 		int yy = y_arr[t] + j;
@@ -19,6 +20,7 @@ int dfs(int i, int j) {
 }
 
 int main() {
+	int answer = 0;
 	cin >> n >> k;
 	for(int i = 0; i < n; i++) {
 		for(int j = 0;j < n; j++) {
@@ -32,17 +34,8 @@ int main() {
 	for(int i = 0; i < n; i++) {
 		for(int j = 0; j < n; j++) {
 			if (v[i][j] == 0) {
-				int cnt = dfs(i, j);
-				v[i][j] = cnt;
+				if(dfs(i, j) == k) answer++;
 			}
-		}
-	}
-	
-	int answer = 0;
-	
-	for(int i = 0; i < n; i++) {
-		for(int j = 0; j < n; j++) {
-			if(v[i][j] == k) answer++;
 		}
 	}
 	
