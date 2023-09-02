@@ -70,3 +70,28 @@ Empty
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
+
+
+---
+
+
+기존 작성했던 틀린 코드
+```[C++]
+#include <iostream>
+using namespace std;
+
+int solution(int n) {
+    long long dp[1000000000] = { 0 };
+    dp[1] = 1;
+    for(int i = 2; i <= n; i++) {
+        dp[i] = i % 2 == 0 ? dp[i / 2] : dp[i - 1];
+    }
+    return dp[n];
+}
+```
+
+- 문제 조건에서 n의 값은 10억 이하의 자연수임 -> long long 배열로 풀이 불가능
+- 계산한 값들을 저장하는 방식으로 하면 안됨
+- n이 1일 때 부터 차근차근 계산하는 방식으로 했지만 내가 찾으려는 n의 값을 시작으로 타고타고 내려가는 방식으로 찾아야함
+
+수정한 풀이는 cpp 파일에 ..
