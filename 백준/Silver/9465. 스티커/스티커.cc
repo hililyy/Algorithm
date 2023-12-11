@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int t, n, answer;
+int t, n;
 int field[100001][3], dp[100001][3];
 
 int main() {
@@ -29,10 +29,9 @@ int main() {
         } else {
           dp[i][j] = max(dp[i - 1][1], dp[i - 2][1]) + field[i][j];
         }
-        
-        answer = max(dp[i][j], answer);
       }
     }
+    
     cout << max(dp[n][1], dp[n][2]) << '\n';
   }
   
