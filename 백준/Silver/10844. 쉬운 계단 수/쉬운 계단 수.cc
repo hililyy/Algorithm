@@ -19,9 +19,10 @@ int main() {
     }
   }
   
-  for(int i = 0; i <= 9; i++) answer = (answer + dp[n][i]) % 1000000000;
+  for(int i = 0; i <= 9; i++) answer += dp[n][i];
   
-  cout << answer;
+  
+  cout << answer % 1000000000;
   
   return 0;
 }
