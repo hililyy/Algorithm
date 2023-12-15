@@ -3,32 +3,30 @@
 using namespace std;
 
 pair<int, int> line[501];
-int dp[501]; 
-int maximum;
+int dp[501], maximum, n; 
+
 int main() {
   cout.tie(0); cin.tie(0) -> sync_with_stdio(0);
   
-  int n;
   cin >> n;
-  for(int i=0;i<n;i++) {
-    cin >> line[i].first >> line[i].second;
-  }
   
-  sort(line, line+n);
+  for(int i = 0; i < n; i++) cin >> line[i].first >> line[i].second;
+  
+  sort(line, line + n);
   
   dp[0] = 1;
-  for(int i=1;i<n;i++) {
+  
+  for(int i = 1; i < n; i++) {
     dp[i] = 1;
-    for(int j=i-1;j>=0;j--) {
-      if(line[i].second > line[j].second) {
-        dp[i] = max(dp[i], dp[j] + 1);
-      }
+    
+    for(int j = i - 1; j >= 0; j--) {
+      if(line[i].second > line[j].second) dp[i] = max(dp[i], dp[j] + 1);
     }
+    
     maximum = max(dp[i], maximum);
   }
-  // for(int i=0;i<n;i++) {
-  //   cout << line[i].first << line[i].second << " dp: " <<dp[i] << endl;
-  // }
+  
   cout << n - maximum;
+  
   return 0;
 }
