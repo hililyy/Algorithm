@@ -17,25 +17,19 @@ int main() {
                 dp[i] = max(dp[i], dp[j] + 1);
             }
         }
-        // cout << dp[i] << ' ';
     }
-    // cout << endl;
+    
     for(int i = n; i >= 1; i--) {
         r_dp[i] = 1;
         for(int j= n; j > i; j--) {
-          // cout << "i: " << i << " j: " << j ;
-          // cout << " a: " << sequence[i] << " b: " << sequence[j] << endl;
             if(sequence[i] > sequence[j]) {
                 r_dp[i] = max(r_dp[i], r_dp[j] + 1);
             }
         }
     }
     
-    for(int i = 1; i <= n; i++) {
-      // cout << r_dp[i] << ' ';
-      answer = max(answer, dp[i] + r_dp[i]);
-    }
-    // cout << endl;
+    for(int i = 1; i <= n; i++) answer = max(answer, dp[i] + r_dp[i]);
+    
     cout << answer - 1;
 
     return 0;
